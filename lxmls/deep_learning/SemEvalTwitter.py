@@ -5,15 +5,15 @@ import numpy as np
 import os
 
 #DATASETS
-tweets_train_path = 'DATA/twitter/datasets/semeval_train.txt'  
-tweets_2013_path  = 'DATA/twitter/datasets/tweets_2013.txt'
-tweets_2014_path  = 'DATA/twitter/datasets/tweets_2014.txt'
-tweets_2015_path  = 'DATA/twitter/datasets/tweets_2015.txt'
+tweets_train_path = 'data/twitter/datasets/semeval_train.txt'  
+tweets_2013_path  = 'data/twitter/datasets/tweets_2013.txt'
+tweets_2014_path  = 'data/twitter/datasets/tweets_2014.txt'
+tweets_2015_path  = 'data/twitter/datasets/tweets_2015.txt'
 
 #TODO: find a place to put the embeddings 
 #TODO: create a pruned version of the embeddings file containing only the needed vectors
 emb_path = '/Users/samir/Code/resources/WordModels/Embeddings/str_skip_200.txt'    
-pretrained_emb = 'DATA/twitter/features/E.pkl'
+pretrained_emb = 'data/twitter/features/E.pkl'
 
 
 def FmesSemEval(pred, gold):
@@ -135,7 +135,8 @@ def extract_feats(corpus, wrd2idx, one_hot):
                  # UNKNOWN
                  tmp_x.append(1)
                  n_out += 1        
-        X.append(tmp_x)
+        # X.append(tmp_x)
+        X.append(np.array(tmp_x).astype('int32'))
         # TARGETS
         if tweet[0] == 'positive':
             y.append(0)
